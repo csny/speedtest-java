@@ -11,20 +11,20 @@ public class SpeedTest {
 	static int zerocounter;
 	static int loopcounter;
 	
-	private static void decreaseRecursion(long cnt) {
+	private static void recurseDecreasing(long cnt) {
 		
 		allcounter++;
 		if (cnt == 0){
 			zerocounter++;
 			return;
 		} else {
-			decreaseRecursion(--cnt);
+			recurseDecreasing(--cnt);
 		}
 	}
 	private static boolean initCalc1() {
 		for (int i=0;i<100;i++){
 			for (int j=0;j<100;j++){
-				decreaseRecursion(100000);
+				recurseDecreasing(100000);
 				loopcounter++;
 			}
 		}
@@ -33,7 +33,7 @@ public class SpeedTest {
 	private static boolean initCalc2() {
 		IntStream.range(0, 100).forEach(i -> {
 			IntStream.range(0, 100).forEach(j -> {
-				decreaseRecursion(100000);
+				recurseDecreasing(100000);
 				loopcounter++;
 			});
 		});
